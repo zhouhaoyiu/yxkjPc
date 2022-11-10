@@ -40,12 +40,7 @@ onMounted(() => {
   <div style="overflow-y: auto">
     <h1>查找区域</h1>
     <div class="listContent">
-      <div
-        class="list"
-        v-for="i in list"
-        :key="i.jobId"
-        @click="exportToTable(i.jobUuid)"
-      >
+      <div class="list" v-for="i in list" :key="i.jobId" @click="exportToTable(i.jobUuid)">
         <div class="jobContent">{{ i.jly }} 记录的{{ i.jobContent }}</div>
         <div>
           {{ i.jobGroup }}
@@ -60,6 +55,7 @@ onMounted(() => {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
   .list {
     display: flex;
     flex-direction: column;
@@ -75,14 +71,17 @@ onMounted(() => {
     color: #fff;
     cursor: pointer;
     user-select: none;
+
     &:hover {
       background-color: rgba(42, 94, 197, 0.8);
       transform: scale(0.97);
     }
+
     &:active {
       background-color: rgba(42, 94, 197, 0.8);
       transform: scale(0.95);
     }
+
     .jobContent {
       font-size: 15px;
       font-weight: bold;

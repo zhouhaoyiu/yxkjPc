@@ -5,12 +5,8 @@
       <div>有限空间作业</div>
     </div>
     <div>
-      <button
-        class="buttonList"
-        @click="goPage(index)"
-        :class="index === focusButton ? 'buttonActive' : ''"
-        v-for="(button, index) in buttonList"
-      >
+      <button class="buttonList" @click="goPage(index)" :class="index === focusButton ? 'buttonActive' : ''"
+        v-for="(button, index) in buttonList">
         {{ button.name }}
       </button>
     </div>
@@ -61,6 +57,7 @@ onMounted(() => {
   flex-direction: column;
   justify-content: start;
   align-items: center;
+
   .topInfo {
     display: flex;
     flex-direction: column;
@@ -75,6 +72,7 @@ onMounted(() => {
     // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     // padding: 0 10px;
   }
+
   .buttonList {
     width: 90%;
     height: 40px;
@@ -85,16 +83,13 @@ onMounted(() => {
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+
     &:hover {
       background-color: #2b5cab99;
       color: #fff;
     }
-    // &:focus {
-    //   background-color: #2c3e50;
-    //   color: #fff;
-    //   transform: scale(0.95);
-    // }
   }
+
   .buttonActive {
     background-color: #2b5cab;
     color: #fff;

@@ -1,25 +1,19 @@
 <template>
-  <div
-    id="content"
-    style="
+  <div id="content" style="
       background: #fff;
       display: flex;
       flex-direction: column;
       color: black;
-    "
-  >
+    ">
     <button id="back" @click="backList">返回</button>
     <button id="print" @click="print">打印</button>
-    <div
-      style="
+    <div style="
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         /* margin-top: 100px; */
-      "
-      class="box"
-    >
+      " class="box">
       <h4>城北营销分公司有限空间作业</h4>
       <table class="infoTable">
         <tbody>
@@ -103,12 +97,7 @@
             </td>
           </tr>
           <tr>
-            <td
-              data-v="检测位置气体情况"
-              id="sjs-B10"
-              style="text-align: center"
-              colspan="1"
-            >
+            <td data-v="检测位置气体情况" id="sjs-B10" style="text-align: center" colspan="1">
               检测位置<br />气体情况
             </td>
             <td colspan="1" id="sjs-C10">{{ job.positionList[0].key }}</td>
@@ -209,13 +198,8 @@
             </td>
           </tr>
           <tr>
-            <td
-              rowspan="2"
-              colspan="7"
-              data-v="备注：1、气体安全范围（氧气（O2）：19.5%~23% 可燃气体物质0% 一氧化碳（CO)＜24ppm 硫化氢(H2S)小于10ppm 
-          2、该审批表作为进入有限空间作业的依据，不得涂改 要求各部门存档时间至少一年"
-              id="sjs-A19"
-            >
+            <td rowspan="2" colspan="7" data-v="备注：1、气体安全范围（氧气（O2）：19.5%~23% 可燃气体物质0% 一氧化碳（CO)＜24ppm 硫化氢(H2S)小于10ppm 
+          2、该审批表作为进入有限空间作业的依据，不得涂改 要求各部门存档时间至少一年" id="sjs-A19">
               备注：1、气体安全范围（氧气（O2）：19.5%~23% 可燃气体物质0%
               一氧化碳（CO)＜24ppm 硫化氢(H2S)小于10ppm <br />
               2、该审批表作为进入有限空间作业的依据，不得涂改
@@ -225,29 +209,18 @@
         </tbody>
       </table>
     </div>
-    <!-- <div /> -->
-    <!-- 第二页 -->
-
-    <div
-      style="
+    <div style="
         page-break-after: always;
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: 200px;
-      "
-    >
-      <img
-        v-if="job.gasDetectionBase64Arr"
-        style="width: 600px; height: 500px; margin-bottom: 20px"
-        :src="'data:image/jpg;base64,' + job.gasDetectionBase64Arr"
-      />
+      ">
+      <img v-if="job.gasDetectionBase64Arr" style="width: 600px; height: 500px; margin-bottom: 20px"
+        :src="'data:image/jpg;base64,' + job.gasDetectionBase64Arr" />
 
-      <img
-        v-if="job.signBoardBase64Arr"
-        style="width: 600px; height: 500px; margin-bottom: 20px"
-        :src="'data:image/jpg;base64,' + job.signBoardBase64Arr"
-      />
+      <img v-if="job.signBoardBase64Arr" style="width: 600px; height: 500px; margin-bottom: 20px"
+        :src="'data:image/jpg;base64,' + job.signBoardBase64Arr" />
       <!-- <img
     style="width: 300px; height: 150px; margin-right: 20px"
     v-if="job.exhaustAirBase64Arr"
@@ -346,11 +319,13 @@ async function getJobInfo() {
   cursor: pointer;
   margin-top: 20px;
   margin-left: 20px;
+
   &:hover {
     background-color: #000;
     color: #fff;
   }
 }
+
 #print {
   position: absolute;
   top: 0;
@@ -363,34 +338,42 @@ async function getJobInfo() {
   cursor: pointer;
   margin-top: 20px;
   margin-left: 140px;
+
   &:hover {
     background-color: #000;
     color: #fff;
   }
 }
+
 table {
   width: 750px;
   font-size: 14px;
   border-collapse: collapse;
   border: 1px solid #000;
+
   td {
     height: 40px;
     border: 1px solid #000;
   }
+
   tr {
     border: 1px solid #000;
   }
+
   img {
     // 图片长宽为100px 50px
     width: 100px;
     height: 50px;
   }
+
   #sjs-B3 {
     width: 150px;
   }
+
   #sjs-A1 {
     width: 100px;
   }
+
   #sjs-C10,
   #sjs-D10,
   #sjs-E10,
@@ -399,6 +382,7 @@ table {
   #sjs-H10 {
     width: 50px;
   }
+
   // #sjs-B18,
   #sjs-F18 {
     width: 20%;

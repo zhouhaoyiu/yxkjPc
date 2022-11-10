@@ -20,6 +20,7 @@ const goHome = () => {
   display: flex;
   justify-content: center;
   align-items: center;
+
   .goHome {
     width: 100px;
     height: 40px;

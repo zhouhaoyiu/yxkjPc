@@ -19,6 +19,7 @@ import leftBar from "./components/leftBar.vue";
   align-items: center;
   flex-direction: row;
   font-size: 14px;
+
   .appview {
     width: 100%;
     height: 100%;

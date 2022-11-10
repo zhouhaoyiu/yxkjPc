@@ -26,10 +26,10 @@ const routes = [
       },
       {
         path: "list",
-        name: "ListPage",
+        name: "listPage",
         component: () =>
           import(
-            /* webpackChunkName: "ListPage" */ "./components/ListPage.vue"
+            /* webpackChunkName: "listPage" */ "./components/listPage.vue"
           ),
       },
     ],
@@ -46,5 +46,5 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
-// createApp(App).use(VueAxios, axios).mount("#app");
+
 createApp(App).use(VueAxios, axios).use(router).mount("#app");
