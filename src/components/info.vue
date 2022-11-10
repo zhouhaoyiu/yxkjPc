@@ -264,6 +264,7 @@ onBeforeMount(async () => {
 
 const print = () => {
   document.getElementById("print").style.display = "none";
+  document.getElementById("back").style.display = "none";
   // leftBar
   document.querySelector(".leftBar").style.display = "none";
   // 文档背景设为白色
@@ -272,6 +273,7 @@ const print = () => {
   document.querySelector(".box").style.marginTop = "100px";
   window.print();
   document.getElementById("print").style.display = "block";
+  document.getElementById("back").style.display = "block";
   document.querySelector(".box").style.marginTop = "0px";
 };
 const backList = () => {
