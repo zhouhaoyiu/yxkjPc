@@ -10,7 +10,7 @@ const routes = [
     redirect: "/login",
   },
   {
-    path: "*",
+    path: "/:pathMatch(.*)",
     redirect: "/login",
   },
   {
