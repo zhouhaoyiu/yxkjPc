@@ -8,6 +8,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --el-color-primary: #2b5cab !important;  
 }
 * {
   box-sizing: border-box;

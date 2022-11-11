@@ -1,13 +1,14 @@
 <script lang="ts" setup>
 import axios from "axios";
-import { computed, onMounted, ref } from "vue";
+import { computed, onBeforeMount, onMounted, ref, watch, watchEffect } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
 
 const shortcuts = [
   {
-    text: "Last week",
+    // text: "Last week",
+    text: "上周",
     value: () => {
       const end = new Date();
       const start = new Date();
@@ -16,7 +17,8 @@ const shortcuts = [
     },
   },
   {
-    text: "Last month",
+    // text: "Last month",
+    text: "上个月",
     value: () => {
       const end = new Date();
       const start = new Date();
@@ -25,7 +27,8 @@ const shortcuts = [
     },
   },
   {
-    text: "Last 3 months",
+    // text: "Last 3 months",
+    text: "前三个月",
     value: () => {
       const end = new Date();
       const start = new Date();
@@ -35,8 +38,9 @@ const shortcuts = [
   },
 ];
 let page = ref(1);
-let jobGroup = ref("");
+let jobGroup = ref([]);
 let selectDate = ref([]);
+let baseList = ref([]);
 const jobGroups = [
   { label: "机运队", value: "机运队" },
   { label: "管道队", value: "管道队" },
@@ -62,9 +66,44 @@ let list = ref([
 
 let sendSearch = () => {
   console.log("sendSearch");
-  console.log(jobGroup.value);
-  console.log(selectDate.value);
-  console.log(page.value);
+  // console.log(!selectDate.value[0]);
+  // console.log(!jobGroup.value);
+
+
+  if (!selectDate.value[0] && !jobGroup.value.length) {
+    console.log(123);
+
+    list.value = baseList.value;
+    return;
+  }
+  let currentInfo = [] as any[];
+  if (jobGroup.value.length > 0) {
+    list.value.forEach((item) => {
+      jobGroup.value.forEach((group) => {
+        if (item.jobGroup.includes(group)) {
+          currentInfo.push(item);
+        }
+      })
+    })
+  }
+  else {
+    currentInfo = list.value;
+  }
+  // 如果有selectDate
+  if (selectDate.value.length > 0) {
+    let currentInfo2 = [] as any;
+    currentInfo.forEach((item) => {
+      // 如果jobDate在selectDate的两个日期之间
+      if (new Date(item.jobDate) >= new Date(selectDate.value[0]) && new Date(item.jobDate) <= new Date(selectDate.value[1])) {
+        currentInfo2.push(item);
+      }
+    })
+    currentInfo = currentInfo2;
+  }
+  else {
+    currentInfo = currentInfo;
+  }
+  list.value = currentInfo;
 };
 async function getInfoByPage() {
   const res = await axios.get(
@@ -78,13 +117,14 @@ async function getInfoByPage() {
   );
   console.log(res.data);
   list.value = res.data;
+  baseList.value = res.data;
 }
 async function exportToTable(UUID: string) {
   router.push({ path: "/home/info", query: { UUID: UUID } });
 }
 
 let size = ref("medium");
-let handleSizeChange = (e) => {
+let handleSizeChange = (e: string) => {
   size.value = e;
   localStorage.setItem("size", e);
 };
@@ -99,10 +139,19 @@ let listStyle = computed(() => {
       return "width: 46%;";
   }
 });
+onBeforeMount(() => {
+  size.value = localStorage.getItem("size") || "medium";
+});
+
+// 当!selectDate.value[0] && !jobGroup.value.length时，list.value = baseList.value
+watchEffect(() => {
+  if (!selectDate.value[0] && !jobGroup.value.length) {
+    list.value = baseList.value;
+  }
+})
 
 onMounted(() => {
   getInfoByPage();
-  size.value = localStorage.getItem("size") || "medium";
 });
 </script>
 
@@ -117,13 +166,17 @@ onMounted(() => {
       </el-radio-group>
     </div>
     <div class="searchArea">
-      作业段组：
+      <strong>
+        作业段组：
+      </strong>
       <el-select v-model="jobGroup" multiple placeholder="请选择作业段组" collapse-tags collapse-tags-tooltip
         style="width: 180px">
         <el-option v-for="item in jobGroups" :key="item.value" :label="item.label" :value="item.value"></el-option>
       </el-select>
       <div style="width: max-content; margin-left: 20px">
-        作业日期：
+        <strong>
+          作业日期：
+        </strong>
         <el-date-picker v-model="selectDate" type="daterange" unlink-panels range-separator="到" start-placeholder="开始日期"
           end-placeholder="结束日期" :shortcuts="shortcuts" />
       </div>
