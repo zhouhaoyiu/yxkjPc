@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <button class="goHome" @click="goHome">去首页</button>
+    <button class="goHome" @click="goHome">首页</button>
   </div>
 </template>
 
@@ -14,7 +14,11 @@ const goHome = () => {
 
 <style lang="scss" scoped>
 .content {
-  background: #d6eff8;
+  // background: #d6eff8;
+  background: rgb(252, 163, 159);
+  // background-image: url(noise.png);
+  background-image: url("noise.png");
+  background-attachment: fixed;
   width: 100%;
   height: 100%;
   display: flex;
@@ -22,14 +26,29 @@ const goHome = () => {
   align-items: center;
 
   .goHome {
-    width: 100px;
-    height: 40px;
+    width: 144px;
+    height: 48px;
     background-color: #fff;
-    border: 1px solid #000;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: 600;
+    border: 3px ridge rgba(250, 69, 49, 0.1);
+    border-radius: 12px;
+    font-size: 24px;
+    font-weight: 900;
     cursor: pointer;
+    color: rgb(250, 69, 49);
+    user-select: none;
+    font-weight: 900;
+    letter-spacing: 2px;
+    transition: all .3s linear;
+  }
+
+  .goHome:hover {
+    // background-color: #000;
+    background-color: rgb(250, 69, 49);
+    color: #fff;
+  }
+
+  .goHome:active {
+    transform: matrix3d(0.95, 0, 0, 0, 0, 0.95, 0, 0, 0, 0, 0.95, 0, 0, 0, 0, 1);
   }
 }
 </style>

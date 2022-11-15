@@ -132,9 +132,9 @@ let handleSizeChange = (e: string) => {
 let listStyle = computed(() => {
   switch (size.value) {
     case "small":
-      return "width: 13%;margin:8px";
+      return "width: 13%;margin: 8px";
     case "medium":
-      return "width: 31%;margin:12px";
+      return "width: 31%;margin: 6px 12px";
     case "large":
       return "width: 46%;";
   }
@@ -218,9 +218,9 @@ onMounted(() => {
     justify-content: start;
     align-items: start;
     width: 46%;
-    height: 66px;
-    padding: 5px 10px;
-    margin: 7px 20px;
+    height: 73px;
+    padding: 5px 8px 15px 8px;
+    margin: 5px 15px;
     border-radius: 8px;
     box-shadow: 0 0 10px 0 #485d7a85;
     border: 1px solid #3c56788a;
