@@ -59,7 +59,7 @@
             </td>
             <td colspan="2" data-v="个人防护用品" id="sjs-E5">个人防护用品</td>
             <td colspan="3" id="sjs-G5">
-              {{ job.personalProtectiveValue ? "合格" : "不合格" }}
+              {{ job.personalProtectionValue ? "合格" : "不合格" }}
             </td>
           </tr>
           <tr>
