@@ -61,6 +61,7 @@ let list = ref([
     jobUuid: "1",
     jly: "1",
     jobDate: "1",
+    status: 1,
   },
 ]);
 
@@ -132,13 +133,27 @@ let handleSizeChange = (e: string) => {
 let listStyle = computed(() => {
   switch (size.value) {
     case "small":
-      return "width: 13%;margin: 8px";
+      return "width: 13%;margin: 8px;";
     case "medium":
-      return "width: 31%;margin: 6px 12px";
+      return "width: 31%;margin: 6px 12px;";
     case "large":
       return "width: 46%;";
   }
 });
+
+const colorStyle = (i: number) => {
+  switch (i) {
+    case 1:
+      return "background-color: #3c5678;";
+    case 2:
+      return "background-color: #67C23A;";
+    case 3:
+      return "background-color: #F56C6C";
+    default:
+      return "background-color: #3c5678;";
+  }
+};
+
 onBeforeMount(() => {
   size.value = localStorage.getItem("size") || "medium";
 });
@@ -183,10 +198,11 @@ onMounted(() => {
       <el-button type="primary" style="margin-left: 10px; height: 30px" @click="sendSearch">查询</el-button>
     </div>
     <div class="listContent">
-      <div class="list" v-for="i in list" :key="i.jobId" @click="exportToTable(i.jobUuid)" :style="listStyle">
+      <div class="list" v-for="i in list" :key="i.jobId" @click="exportToTable(i.jobUuid)"
+        :style="listStyle?.concat(colorStyle(i.status))">
         <div class="jobContent">{{ i.jly }} 记录的{{ i.jobContent }}</div>
-        <div class="jobGroup"> {{ i.jobGroup }} </div>
-        <div class="jobDate"> {{ i.jobDate }} </div>
+        <div class="jobGroup" :style="`color:${i.status == 2 ? '#fff' : ''}`"> {{ i.jobGroup }} </div>
+        <div class="jobDate" :style="`color:${i.status == 2 ? '#fff' : ''}`"> {{ i.jobDate }} </div>
       </div>
     </div>
   </div>
@@ -224,18 +240,18 @@ onMounted(() => {
     border-radius: 8px;
     box-shadow: 0 0 10px 0 #485d7a85;
     border: 1px solid #3c56788a;
-    background-color: #3c5678;
+    // background-color: #3c5678;
     color: rgb(255, 255, 255);
     cursor: pointer;
     user-select: none;
 
     &:hover {
-      background-color: rgba(42, 94, 197, 0.8);
+      // background-color: rgba(42, 94, 197, 0.8);
       transform: scale(0.97);
     }
 
     &:active {
-      background-color: rgba(42, 94, 197, 0.8);
+      // background-color: rgba(42, 94, 197, 0.8);
       transform: scale(0.95);
     }
 
@@ -246,7 +262,7 @@ onMounted(() => {
 
     .jobGroup {
       margin-bottom: 5px;
-      color: rgb(203, 203, 203);
+      color: rgb(225, 225, 225);
       font-size: 12px;
     }
 
