@@ -4,9 +4,13 @@
       <div>太原供水</div>
       <div>有限空间作业</div>
     </div>
-    <div>
-      <button class="buttonList" @click="goPage(index)" :class="index === focusButton ? 'buttonActive' : ''"
-        v-for="(button, index) in buttonList">
+    <div style="width: 100%">
+      <button
+        class="buttonList"
+        @click="goPage(index)"
+        :class="index === focusButton ? 'buttonActive' : ''"
+        v-for="(button, index) in buttonList"
+      >
         {{ button.name }}
       </button>
     </div>
@@ -26,18 +30,18 @@ let buttonList = ref([
     name: "审批列表",
     path: "/list",
   },
-  {
-    name: "审批列表",
-    path: "/list",
-  },
-  {
-    name: "审批列表",
-    path: "/list",
-  },
-  {
-    name: "审批列表",
-    path: "/list",
-  },
+  // {
+  //   name: "审批列表",
+  //   path: "/list",
+  // },
+  // {
+  //   name: "审批列表",
+  //   path: "/list",
+  // },
+  // {
+  //   name: "审批列表",
+  //   path: "/list",
+  // },
 ]);
 let goPage = (index) => {
   focusButton.value = index;
