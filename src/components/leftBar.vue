@@ -5,12 +5,8 @@
       <div>有限空间作业</div>
     </div>
     <div style="width: 100%">
-      <button
-        class="buttonList"
-        @click="goPage(index)"
-        :class="index === focusButton ? 'buttonActive' : ''"
-        v-for="(button, index) in buttonList"
-      >
+      <button class="buttonList" @click="goPage(index)" :class="index === focusButton ? 'buttonActive' : ''"
+        v-for="(button, index) in buttonList">
         {{ button.name }}
       </button>
     </div>
@@ -27,9 +23,13 @@ let dis = computed(() => {
 let focusButton = ref(0);
 let buttonList = ref([
   {
-    name: "审批列表",
+    name: "作业审批表",
     path: "/list",
   },
+  {
+    name: "现场记录表",
+    path: "/record"
+  }
   // {
   //   name: "审批列表",
   //   path: "/list",
