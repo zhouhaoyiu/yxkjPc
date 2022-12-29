@@ -19,17 +19,32 @@ const routes = [
     component: () => import(/* webpackChunkName: "home" */ "./pages/home.vue"),
     children: [
       {
-        path: "info",
-        name: "info",
+        path: "workInfo",
+        name: "workInfo",
         component: () =>
-          import(/* webpackChunkName: "info" */ "./components/info.vue"),
+          import(/* webpackChunkName: "workInfo" */ "./components/workInfo.vue"),
       },
       {
-        path: "list",
-        name: "listPage",
+        path: "recordInfo",
+        name: "recordInfo",
+        component: () =>
+          import(/* webpackChunkName: "recordInfo" */ "./components/recordInfo.vue"),
+      },
+      {
+        path: "workListPage",
+        name: "workListPage",
         component: () =>
           import(
-            /* webpackChunkName: "listPage" */ "./components/listPage.vue"
+            /* webpackChunkName: "workListPage" */ "./components/workListPage.vue"
+          ),
+      },
+
+      {
+        path: "recordPage",
+        name: "recordPage",
+        component: () =>
+          import(
+            /* webpackChunkName: "recordPage" */ "./components/recordPage.vue"
           ),
       },
     ],

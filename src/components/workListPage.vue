@@ -38,77 +38,22 @@ const shortcuts = [
   },
 ];
 let page = ref(1);
-let jobGroup = ref([]);
 let selectDate = ref([]);
 let baseList = ref([]);
-const jobGroups = [
-  { label: "机运队", value: "机运队" },
-  { label: "管道队", value: "管道队" },
-  { label: "消防组", value: "消防组" },
-  { label: "巡视工段", value: "巡视工段" },
-  { label: "管理工段", value: "管理工段" },
-  { label: "营销一段", value: "营销一段" },
-  { label: "户表一段", value: "户表一段" },
-  { label: "户表二段", value: "户表二段" },
-  { label: "户表三段", value: "户表三段" },
-  { label: "户表四段", value: "户表四段" },
-];
+
 let list = ref([
   {
-    jobId: "1",
+    workId: "1",
     jobContent: "1",
-    jobGroup: "1",
-    jobUuid: "1",
-    jly: "1",
-    jobDate: "1",
+    workUuid: "1",
+    workDate: "1",
     status: 1,
   },
 ]);
 
-let sendSearch = () => {
-  console.log("sendSearch");
-  // console.log(!selectDate.value[0]);
-  // console.log(!jobGroup.value);
-
-
-  if (!selectDate.value[0] && !jobGroup.value.length) {
-    console.log(123);
-
-    list.value = baseList.value;
-    return;
-  }
-  let currentInfo = [] as any[];
-  if (jobGroup.value.length > 0) {
-    list.value.forEach((item) => {
-      jobGroup.value.forEach((group) => {
-        if (item.jobGroup.includes(group)) {
-          currentInfo.push(item);
-        }
-      })
-    })
-  }
-  else {
-    currentInfo = list.value;
-  }
-  // 如果有selectDate
-  if (selectDate.value.length > 0) {
-    let currentInfo2 = [] as any;
-    currentInfo.forEach((item) => {
-      // 如果jobDate在selectDate的两个日期之间
-      if (new Date(item.jobDate) >= new Date(selectDate.value[0]) && new Date(item.jobDate) <= new Date(selectDate.value[1])) {
-        currentInfo2.push(item);
-      }
-    })
-    currentInfo = currentInfo2;
-  }
-  else {
-    currentInfo = currentInfo;
-  }
-  list.value = currentInfo;
-};
 async function getInfoByPage() {
   const res = await axios.get(
-    "http://localhost:8092/Job/adminGetSendJobByPage",
+    "http://localhost:8092/workJob/adminGetSendWorkJobByPage",
     {
       params: {
         page: page.value,
@@ -121,7 +66,7 @@ async function getInfoByPage() {
   baseList.value = res.data;
 }
 async function exportToTable(UUID: string) {
-  router.push({ path: "/home/info", query: { UUID: UUID } });
+  router.push({ path: "/home/workInfo", query: { UUID: UUID } });
 }
 
 let size = ref("medium");
@@ -142,12 +87,14 @@ let listStyle = computed(() => {
 });
 
 const colorStyle = (i: number) => {
+  console.log(i);
+  
   switch (i) {
-    case 1:
+    case 0:
       return "background-color: #3c5678;";
+    case 1:
+      return "background-color: #67C23ADD;";
     case 2:
-      return "background-color: #67C23A;";
-    case 3:
       return "background-color: #F56C6C";
     default:
       return "background-color: #3c5678;";
@@ -160,7 +107,7 @@ onBeforeMount(() => {
 
 // 当!selectDate.value[0] && !jobGroup.value.length时，list.value = baseList.value
 watchEffect(() => {
-  if (!selectDate.value[0] && !jobGroup.value.length) {
+  if (!selectDate.value[0]) {
     list.value = baseList.value;
   }
 })
@@ -181,13 +128,6 @@ onMounted(() => {
       </el-radio-group>
     </div>
     <div class="searchArea">
-      <strong>
-        作业段组：
-      </strong>
-      <el-select v-model="jobGroup" multiple placeholder="请选择作业段组" collapse-tags collapse-tags-tooltip
-        style="width: 180px">
-        <el-option v-for="item in jobGroups" :key="item.value" :label="item.label" :value="item.value"></el-option>
-      </el-select>
       <div style="width: max-content; margin-left: 20px">
         <strong>
           作业日期：
@@ -195,14 +135,12 @@ onMounted(() => {
         <el-date-picker v-model="selectDate" type="daterange" unlink-panels range-separator="到" start-placeholder="开始日期"
           end-placeholder="结束日期" :shortcuts="shortcuts" />
       </div>
-      <el-button type="primary" style="margin-left: 10px; height: 30px" @click="sendSearch">查询</el-button>
     </div>
     <div class="listContent">
-      <div class="list" v-for="i in list" :key="i.jobId" @click="exportToTable(i.jobUuid)"
+      <div class="list" v-for="i,index in list" :key="i.workId" @click="exportToTable(i.workUuid)"
         :style="listStyle?.concat(colorStyle(i.status))">
-        <div class="jobContent">{{ i.jly }} 记录的{{ i.jobContent }}</div>
-        <div class="jobGroup" :style="`color:${i.status == 2 ? '#fff' : ''}`"> {{ i.jobGroup }} </div>
-        <div class="jobDate" :style="`color:${i.status == 2 ? '#fff' : ''}`"> {{ i.jobDate }} </div>
+        <div class="jobContent">有限空间作业审批{{ index + 1 }}</div>
+        <div class="jobDate" :style="`color:${i.status == 2 ? '#fff' : ''}`"> {{ i.workDate }} </div>
       </div>
     </div>
   </div>
@@ -239,7 +177,7 @@ onMounted(() => {
     margin: 5px 15px;
     border-radius: 8px;
     box-shadow: 0 0 10px 0 #485d7a85;
-    border: 1px solid #3c56788a;
+    // border: 1px solid #3c56788a;
     // background-color: #3c5678;
     color: rgb(255, 255, 255);
     cursor: pointer;
@@ -260,14 +198,9 @@ onMounted(() => {
       font-weight: bold;
     }
 
-    .jobGroup {
-      margin-bottom: 5px;
-      color: rgb(225, 225, 225);
-      font-size: 12px;
-    }
 
     .jobDate {
-      color: rgb(198, 198, 198);
+      color: rgb(226, 226, 226);
     }
   }
 }

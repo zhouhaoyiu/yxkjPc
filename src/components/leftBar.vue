@@ -18,17 +18,17 @@ import { computed, onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 let dis = computed(() => {
-  return router.currentRoute.value.path == "/home/info";
+  return router.currentRoute.value.path == "/home/workInfo";
 });
 let focusButton = ref(0);
 let buttonList = ref([
   {
     name: "作业审批表",
-    path: "/list",
+    path: "/workListPage",
   },
   {
     name: "现场记录表",
-    path: "/record"
+    path: "/recordPage"
   }
   // {
   //   name: "审批列表",

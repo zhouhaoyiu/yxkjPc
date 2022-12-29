@@ -277,7 +277,7 @@ const print = () => {
   document.querySelector(".box").style.marginTop = "0px";
 };
 const backList = () => {
-  router.replace("/home/list");
+  router.replace("/home/recordPage");
 };
 async function getJobInfo() {
   const jobInfoRes = await axios.get(
