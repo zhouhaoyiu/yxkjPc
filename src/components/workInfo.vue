@@ -43,7 +43,39 @@
             <td colspan="2" style="width: 187.5px;">作业人员</td>
             <td colspan="6" style="width: 562.5px;">{{ work.zyry }}</td>
           </tr>
-          
+          <tr>
+            <td colspan="2" style="width: 187.5px;">防护措施</td>
+            <td colspan="6" style="width: 562.5px;padding: 8px 4px;" align="left">
+              <div>
+                1、安全防护设备、个人防护用品、作业设备和工器具齐全有效，满足要求；
+                <span v-if="work.s1 || false">□</span><span v-else>√</span>
+              </div>
+              <div>
+                2、应急救援装备满足要求。
+                <span v-if="work.s2 || false">□</span><span v-else>√</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="width: 187.5px;">审批负责人意见</td>
+            <td colspan="6" style="width: 562.5px; padding: 16px;">
+              <div style="display: flex;justify-content: start;font-size: 24px;">
+                {{ work.spfzrInfo }}
+              </div>
+              <div style="display: flex;justify-content: end;align-items: center;margin-bottom: 20px;">
+                <div style="line-height: 40px;"> 
+                  签字：
+                </div>
+                <img v-if="work.spfzrBase64"
+                  style="background-color: red;width: 100px; height: 40px;"
+                  :src="'data:image/jpg;base64,' + work.spfzrBase64" />
+              </div>
+              <div style="display: flex;justify-content: end;">
+                日期：{{ work.verifyDate }}
+              </div>
+            </td>
+          </tr>
+
           <tr style="border:1px solid #fff">
             <td style="border-color: #fff;"></td>
             <td style="border-color: #fff;"></td>
@@ -75,6 +107,15 @@ const work = ref({
 onBeforeMount(async () => {
   await getWorkInfo();
   await nextTick();
+
+  // 拦截ctrl+p
+  document.addEventListener("keydown", function (e) {
+    if (e.ctrlKey && e.keyCode == 80) {
+      e.preventDefault();
+      print();
+    }
+  });
+
   // window.print();
 });
 
@@ -107,6 +148,14 @@ async function getWorkInfo() {
   let data = workInfoRes.data[0];
   console.log("data", data);
   data.workList = JSON.parse(data.workList);
+  data.protectiveMeasureGroups = JSON.parse(data.protectiveMeasureGroups);
+  let s1 = data.protectiveMeasureGroups.includes("step1");
+  let s2 = data.protectiveMeasureGroups.includes("step2");
+
+  console.log("s1", s1);
+  console.log("s2", s2);
+  work.s1 = s1;
+  work.s2 = s2;
   work.value = data;
   console.log("work", work.value.workList);
 }
@@ -121,7 +170,6 @@ async function getWorkInfo() {
 //   const data = jobInfoRes.data[0];
 //   jobData.value = data;
 
-// const job = prop.job;
 // job.positionList = JSON.parse(job.positionList);
 </script>
 

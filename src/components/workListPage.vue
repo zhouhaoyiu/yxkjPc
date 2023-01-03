@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import axios from "axios";
-import { computed, onBeforeMount, onMounted, ref, watch, watchEffect } from "vue";
+import { computed, onBeforeMount, onMounted, ref, watchEffect } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -83,12 +83,14 @@ let listStyle = computed(() => {
       return "width: 31%;margin: 6px 12px;";
     case "large":
       return "width: 46%;";
+    default:
+      return "width: 31%;margin: 6px 12px;";
   }
 });
 
 const colorStyle = (i: number) => {
   console.log(i);
-  
+
   switch (i) {
     case 0:
       return "background-color: #3c5678;";
@@ -137,7 +139,7 @@ onMounted(() => {
       </div>
     </div>
     <div class="listContent">
-      <div class="list" v-for="i,index in list" :key="i.workId" @click="exportToTable(i.workUuid)"
+      <div class="list" v-for="i, index in list" :key="i.workId" @click="exportToTable(i.workUuid)"
         :style="listStyle?.concat(colorStyle(i.status))">
         <div class="jobContent">有限空间作业审批{{ index + 1 }}</div>
         <div class="jobDate" :style="`color:${i.status == 2 ? '#fff' : ''}`"> {{ i.workDate }} </div>
