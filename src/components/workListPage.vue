@@ -2,41 +2,10 @@
 import axios from "axios";
 import { computed, onBeforeMount, onMounted, ref, watchEffect } from "vue";
 import { useRouter } from "vue-router";
+import { shortcuts } from "./share";
 
 const router = useRouter();
 
-const shortcuts = [
-  {
-    // text: "Last week",
-    text: "上周",
-    value: () => {
-      const end = new Date();
-      const start = new Date();
-      start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-      return [start, end];
-    },
-  },
-  {
-    // text: "Last month",
-    text: "上个月",
-    value: () => {
-      const end = new Date();
-      const start = new Date();
-      start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-      return [start, end];
-    },
-  },
-  {
-    // text: "Last 3 months",
-    text: "前三个月",
-    value: () => {
-      const end = new Date();
-      const start = new Date();
-      start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-      return [start, end];
-    },
-  },
-];
 let page = ref(1);
 let selectDate = ref([]);
 let baseList = ref([]);
@@ -89,8 +58,6 @@ let listStyle = computed(() => {
 });
 
 const colorStyle = (i: number) => {
-  console.log(i);
-
   switch (i) {
     case 0:
       return "background-color: #3c5678;";
@@ -141,8 +108,8 @@ onMounted(() => {
     <div class="listContent">
       <div class="list" v-for="i, index in list" :key="i.workId" @click="exportToTable(i.workUuid)"
         :style="listStyle?.concat(colorStyle(i.status))">
-        <div class="jobContent">有限空间作业审批{{ index + 1 }}</div>
-        <div class="jobDate" :style="`color:${i.status == 2 ? '#fff' : ''}`"> {{ i.workDate }} </div>
+        <div class="workContent">有限空间作业审批{{ index + 1 }}</div>
+        <div class="workDate" :style="`color:${i.status == 2 ? '#fff' : ''}`"> {{ i.workDate }} </div>
       </div>
     </div>
   </div>
@@ -195,13 +162,13 @@ onMounted(() => {
       transform: scale(0.95);
     }
 
-    .jobContent {
+    .workContent {
       font-size: 15px;
       font-weight: bold;
     }
 
 
-    .jobDate {
+    .workDate {
       color: rgb(226, 226, 226);
     }
   }

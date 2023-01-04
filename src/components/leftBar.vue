@@ -45,9 +45,12 @@ let buttonList = ref([
 ]);
 let goPage = (index) => {
   focusButton.value = index;
+  localStorage.setItem("focusButton", index);
   router.push("/home" + buttonList.value[index].path);
 };
 onMounted(() => {
+  focusButton.value = Number(localStorage.getItem("focusButton")) || 0;
+  console.log(focusButton);
   if (router.currentRoute.value.fullPath === "/home") {
     router.push("/home" + buttonList.value[0].path);
   }

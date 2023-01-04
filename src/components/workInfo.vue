@@ -48,30 +48,35 @@
             <td colspan="6" style="width: 562.5px;padding: 8px 4px;" align="left">
               <div>
                 1、安全防护设备、个人防护用品、作业设备和工器具齐全有效，满足要求；
-                <span v-if="work.s1 || false">□</span><span v-else>√</span>
+                <span v-if="!work.s1 || false">□</span><span v-else>√</span>
               </div>
               <div>
                 2、应急救援装备满足要求。
-                <span v-if="work.s2 || false">□</span><span v-else>√</span>
+                <span v-if="!work.s2 || false">□</span><span v-else>√</span>
               </div>
             </td>
           </tr>
           <tr>
             <td colspan="2" style="width: 187.5px;">审批负责人意见</td>
             <td colspan="6" style="width: 562.5px; padding: 16px;">
-              <div style="display: flex;justify-content: start;font-size: 24px;">
-                {{ work.spfzrInfo }}
-              </div>
-              <div style="display: flex;justify-content: end;align-items: center;margin-bottom: 20px;">
-                <div style="line-height: 40px;"> 
-                  签字：
+              <div v-if="work.spfzr">
+                <div style="display: flex;justify-content: start;font-size: 24px;">
+                  {{ work.spfzrInfo }}
                 </div>
-                <img v-if="work.spfzrBase64"
-                  style="background-color: red;width: 100px; height: 40px;"
-                  :src="'data:image/jpg;base64,' + work.spfzrBase64" />
+                <div style="display: flex;justify-content: end;align-items: center;margin-bottom: 20px;">
+                  <div style="line-height: 40px;">
+                    签字：
+                  </div>
+                  <img v-if="work.spfzrBase64"
+                    style="width: 100px; height: 40px;border: 1px solid rgb(240, 240, 240);border-radius: 4px;"
+                    :src="'data:image/jpg;base64,' + work.spfzrBase64" />
+                </div>
+                <div style="display: flex;justify-content: end;">
+                  日期：{{ work.verifyDate }}
+                </div>
               </div>
-              <div style="display: flex;justify-content: end;">
-                日期：{{ work.verifyDate }}
+              <div v-else>
+                未审批
               </div>
             </td>
           </tr>
@@ -92,7 +97,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import axios from "axios";
 import { nextTick, onBeforeMount, ref } from "vue";
 import { useRoute } from "vue-router";
@@ -102,7 +107,19 @@ const router = useRouter();
 const { UUID } = route.query;
 console.log("UUID", UUID);
 const work = ref({
-
+  s1: false,
+  s2: false,
+  spfzrInfo: "",
+  spfzrBase64: "",
+  verifyDate: "",
+  zyfzr: "",
+  jhry: "",
+  zyry: "",
+  workList: [] as any[],
+  spfzr: "",
+  workDate: "",
+  workContent: "",
+  workPosition: "",
 });
 onBeforeMount(async () => {
   await getWorkInfo();
@@ -120,23 +137,23 @@ onBeforeMount(async () => {
 });
 
 const print = () => {
-  document.getElementById("print").style.display = "none";
-  document.getElementById("back").style.display = "none";
+  document.getElementById("print")!.style.display = "none";
+  document.getElementById("back")!.style.display = "none";
   // leftBar
-  document.querySelector(".leftBar").style.display = "none";
+  (document.querySelector(".leftBar")! as HTMLElement).style.display = "none";
   // 文档背景设为白色
   // document.body.style.backgroundColor = "#fff";
   // .box的margin-top设为100px
-  document.querySelector(".box").style.marginTop = "100px";
+  (document.querySelector(".box") as HTMLElement)!.style.marginTop = "100px";
   window.print();
-  document.getElementById("print").style.display = "block";
-  document.getElementById("back").style.display = "block";
-  document.querySelector(".box").style.marginTop = "0px";
+  document.getElementById("print")!.style.display = "block";
+  document.getElementById("back")!.style.display = "block";
+  (document.querySelector(".box")! as HTMLElement)!.style.marginTop = "0px";
 };
 const backList = () => {
   router.replace("/home/workListPage");
 };
-async function getWorkInfo() {
+async function getWorkInfo(): Promise<void> {
   const workInfoRes = await axios.get(
     "http://localhost:8092/workJob/getInfoByWorkJobUuid",
     {
@@ -146,34 +163,22 @@ async function getWorkInfo() {
     }
   );
   let data = workInfoRes.data[0];
-  console.log("data", data);
   data.workList = JSON.parse(data.workList);
   data.protectiveMeasureGroups = JSON.parse(data.protectiveMeasureGroups);
   let s1 = data.protectiveMeasureGroups.includes("step1");
   let s2 = data.protectiveMeasureGroups.includes("step2");
-
-  console.log("s1", s1);
-  console.log("s2", s2);
-  work.s1 = s1;
-  work.s2 = s2;
   work.value = data;
-  console.log("work", work.value.workList);
+  work.value.s1 = s1;
+  work.value.s2 = s2;
+  console.log("work", work.value);
 }
-// const jobInfoRes = await axios.get(
-//     "http://localhost:8092/Job/getInfoByJobUuid",
-//     {
-//       params: {
-//         jobUuid: String(UUID.value),
-//       },
-//     }
-//   );
-//   const data = jobInfoRes.data[0];
-//   jobData.value = data;
-
-// job.positionList = JSON.parse(job.positionList);
 </script>
 
 <style scoped lang="scss">
+#content {
+  user-select: none;
+}
+
 #back {
   position: absolute;
   top: 0;

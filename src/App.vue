@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import leftBar from "./components/leftBar.vue";
 </script>
 
 <template>

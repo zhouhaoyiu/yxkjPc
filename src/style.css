@@ -12,11 +12,12 @@
 }
 * {
   box-sizing: border-box;
-  /* font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "微软雅黑", Arial, sans-serif; */
-  font-family: Marlin, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif !important;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+  'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+  /* 字之间的间距 */
+  letter-spacing: 0.2px;
+  /* font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", */
+  /* "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif !important; */
 }
 
 a {
