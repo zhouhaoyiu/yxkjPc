@@ -18,7 +18,7 @@ import { computed, onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 let dis = computed(() => {
-  return router.currentRoute.value.path == "/home/workInfo";
+  return router.currentRoute.value.path == "/home/workInfo" || router.currentRoute.value.path == "/home/recordInfo";
 });
 let focusButton = ref(0);
 let buttonList = ref([

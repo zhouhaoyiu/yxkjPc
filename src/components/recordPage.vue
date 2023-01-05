@@ -16,9 +16,12 @@
       </div>
     </div>
     <div class="listContent">
-      <div class="list" v-for="(i, index) in list" :key="i.workId" @click="exportToTable(i.jobUuid)" :style="listStyle"
+      <div class="list" v-for="(i, index) in list" :key="i.jobId" @click="exportToTable(i.jobUuid)" :style="listStyle"
         style="background-color: #3c5678">
         <div class="jobContent">有限空间作业审批{{ index + 1 }}</div>
+        <div>
+          检测记录员: {{ i.jcjly }}
+        </div>
         <div class="jobDate">
           {{ i.jobDate }}
         </div>
@@ -38,11 +41,12 @@ let page = ref(1);
 let size = ref("medium");
 let list = ref([
   {
-    workId: "1",
+    jobId: "1",
     jobContent: "1",
     jobUuid: "1",
     jobDate: "1",
     status: 1,
+    jcjly: "1",
   },
 ]);
 const router = useRouter();

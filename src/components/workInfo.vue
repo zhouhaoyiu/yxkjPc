@@ -125,7 +125,6 @@ onBeforeMount(async () => {
   await getWorkInfo();
   await nextTick();
 
-  // 拦截ctrl+p
   document.addEventListener("keydown", function (e) {
     if (e.ctrlKey && e.keyCode == 80) {
       e.preventDefault();
@@ -133,7 +132,6 @@ onBeforeMount(async () => {
     }
   });
 
-  // window.print();
 });
 
 const print = () => {

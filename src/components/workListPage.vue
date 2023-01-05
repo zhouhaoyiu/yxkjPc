@@ -16,6 +16,7 @@ let list = ref([
     jobContent: "1",
     workUuid: "1",
     workDate: "1",
+    zyfzr: "1",
     status: 1,
   },
 ]);
@@ -110,6 +111,7 @@ onMounted(() => {
         :style="listStyle?.concat(colorStyle(i.status))">
         <div class="workContent">有限空间作业审批{{ index + 1 }}</div>
         <div class="workDate" :style="`color:${i.status == 2 ? '#fff' : ''}`"> {{ i.workDate }} </div>
+        <div>作业负责人：{{ i.zyfzr }}</div>
       </div>
     </div>
   </div>
