@@ -9,6 +9,7 @@
 
 <style lang="scss" scoped>
 .app {
+  user-select: none;
   text-align: center;
   background: rgb(235, 238, 248);
   width: 100%;

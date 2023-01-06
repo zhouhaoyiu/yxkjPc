@@ -110,8 +110,8 @@ onMounted(() => {
       <div class="list" v-for="i, index in list" :key="i.workId" @click="exportToTable(i.workUuid)"
         :style="listStyle?.concat(colorStyle(i.status))">
         <div class="workContent">有限空间作业审批{{ index + 1 }}</div>
-        <div class="workDate" :style="`color:${i.status == 2 ? '#fff' : ''}`"> {{ i.workDate }} </div>
         <div>作业负责人：{{ i.zyfzr }}</div>
+        <div class="workDate" :style="`color:${i.status == 2 ? '#fff' : ''}`"> {{ i.workDate }} </div>
       </div>
     </div>
   </div>
@@ -152,7 +152,6 @@ onMounted(() => {
     // background-color: #3c5678;
     color: rgb(255, 255, 255);
     cursor: pointer;
-    user-select: none;
 
     &:hover {
       // background-color: rgba(42, 94, 197, 0.8);

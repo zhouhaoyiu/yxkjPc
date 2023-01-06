@@ -134,8 +134,6 @@ async function exportToTable(UUID: string) {
     // background-color: #3c5678;
     color: rgb(255, 255, 255);
     cursor: pointer;
-    user-select: none;
-
     &:hover {
       // background-color: rgba(42, 94, 197, 0.8);
       transform: scale(0.97);

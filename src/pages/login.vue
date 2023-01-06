@@ -15,7 +15,8 @@ const goHome = () => {
 <style lang="scss" scoped>
 .content {
   // background: #d6eff8;
-  background: rgb(252, 163, 159);
+  // background: rgb(252, 163, 159);
+  background: #2b5cab;
   // background-image: url(noise.png);
   background-image: url("noise.png");
   background-attachment: fixed;
@@ -29,13 +30,14 @@ const goHome = () => {
     width: 144px;
     height: 48px;
     background-color: #fff;
-    border: 3px ridge rgba(250, 69, 49, 0.1);
+    // border: 3px ridge rgba(250, 69, 49, 0.1);
+    border: 3px ridge rgba(43, 92, 171, 0.1);
     border-radius: 12px;
     font-size: 24px;
     font-weight: 900;
     cursor: pointer;
-    color: rgb(250, 69, 49);
-    user-select: none;
+    // color: rgb(250, 69, 49);
+    color: #2b5cab;
     font-weight: 900;
     letter-spacing: 2px;
     transition: all .3s linear;
@@ -43,7 +45,8 @@ const goHome = () => {
 
   .goHome:hover {
     // background-color: #000;
-    background-color: rgb(250, 69, 49);
+    // background-color: rgb(250, 69, 49);
+    background-color: #2b5cab;
     color: #fff;
   }
 

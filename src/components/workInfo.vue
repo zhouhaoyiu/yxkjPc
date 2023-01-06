@@ -173,10 +173,6 @@ async function getWorkInfo(): Promise<void> {
 </script>
 
 <style scoped lang="scss">
-#content {
-  user-select: none;
-}
-
 #back {
   position: absolute;
   top: 0;
