@@ -14,7 +14,7 @@
         align-items: center;
         /* margin-top: 100px; */
       " class="box">
-      <h4>城北营销分公司有限空间作业</h4>
+      <h2>城北营销分公司有限空间作业</h2>
       <table class="infoTable">
         <tbody>
           <tr>
