@@ -300,19 +300,19 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@nuxt/kit@^3.1.1":
-  version "3.1.2"
-  resolved "https://registry.npmmirror.com/@nuxt/kit/-/kit-3.1.2.tgz#bf5f932b8a82f40bcfec4c1037021f0a75df4582"
-  integrity sha512-m8/AF8hBJiG7aTx2CpiDGeLYYz30fUoPbJ9XiSmHqRIXv1goAFWHSkzWfRNEsoAAbMHf76oB917wVUQ3VSSQHg==
+"@nuxt/kit@^3.1.1", "@nuxt/kit@^3.1.2":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.2.0.tgz#d770e7f087f43d0030f84259671b8f6a5ea0b59d"
+  integrity sha512-Otb1S/08tDxbpeQYLMynjr2TX7ssU1ynbWDpVzFzLBdfHkGWHXpIhJr+0u3LdnPUBw6C/xPXe7fd7RuXI9avoA==
   dependencies:
-    "@nuxt/schema" "3.1.2"
+    "@nuxt/schema" "3.2.0"
     c12 "^1.1.0"
     consola "^2.15.3"
     defu "^6.1.2"
     globby "^13.1.3"
     hash-sum "^2.0.0"
     ignore "^5.2.4"
-    jiti "^1.16.2"
+    jiti "^1.17.0"
     knitwork "^1.0.0"
     lodash.template "^4.5.0"
     mlly "^1.1.0"
@@ -321,26 +321,26 @@
     scule "^1.0.0"
     semver "^7.3.8"
     unctx "^2.1.1"
-    unimport "^2.1.0"
+    unimport "^2.2.4"
     untyped "^1.2.2"
 
-"@nuxt/schema@3.1.2":
-  version "3.1.2"
-  resolved "https://registry.npmmirror.com/@nuxt/schema/-/schema-3.1.2.tgz#a916ecfa96c04553403f7da8d1e7058f65cb3ad1"
-  integrity sha512-wru9LhRXTa6WQlx7c0oYrtvJY7TiVlkBKXY5Rsmfo0StJuWohgZiReu9fu6z6GU4MzZlX25TVjwvq9Q7bNVbSQ==
+"@nuxt/schema@3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.2.0.tgz#b1e072515db70b8f921b7d6f597f91b6f42573e8"
+  integrity sha512-tz9RandI5LgbT9BQ8dE8n4kItV7+4OUgbX42YemcGbtORVJAWJJvQyHGikJ5akUgiTFYTV8tjV6pRPH9Txx0Pg==
   dependencies:
     c12 "^1.1.0"
     create-require "^1.1.1"
     defu "^6.1.2"
     hookable "^5.4.2"
-    jiti "^1.16.2"
+    jiti "^1.17.0"
     pathe "^1.1.0"
     pkg-types "^1.0.1"
     postcss-import-resolver "^2.0.0"
     scule "^1.0.0"
     std-env "^3.3.2"
     ufo "^1.0.1"
-    unimport "^2.1.0"
+    unimport "^2.2.4"
     untyped "^1.2.2"
 
 "@popperjs/core@npm:@sxzz/popperjs-es@^2.11.7":
@@ -1199,10 +1199,15 @@ isarray@~1.0.0:
   resolved "https://registry.npmmirror.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
   integrity sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==
 
-jiti@^1.16.0, jiti@^1.16.2:
+jiti@^1.16.0:
   version "1.16.2"
   resolved "https://registry.npmmirror.com/jiti/-/jiti-1.16.2.tgz#75f7a0a8fde4a0e57e576f7d329491d588db89cf"
   integrity sha512-OKBOVWmU3FxDt/UH4zSwiKPuc1nihFZiOD722FuJlngvLz2glX1v2/TJIgoA4+mrpnXxHV6dSAoCvPcYQtoG5A==
+
+jiti@^1.17.0:
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.17.0.tgz#9a4e1787b9d83e594a5ad27cdf9c9ab555112ac1"
+  integrity sha512-CByzPgFqYoB9odEeef7GNmQ3S5THIBOtzRYoSCya2Sv27AuQxy2jgoFjQ6VTF53xsq1MXRm+YWNvOoDHUAteOw==
 
 js-tokens@^4.0.0:
   version "4.0.0"
@@ -1751,10 +1756,10 @@ unctx@^2.1.1:
     magic-string "^0.26.7"
     unplugin "^1.0.0"
 
-unimport@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.npmmirror.com/unimport/-/unimport-2.1.0.tgz#d1c5bfe29f8ef1625816e2f6f3250fa2c1ec28c1"
-  integrity sha512-GDVIxATluUquX8EqelT6DtnmnZaXGID1jsO9IXwlnxb0OIEqKAxTOnTlnGmHbseoGTh+ZC9kcNDaO18HYQj9KA==
+unimport@^2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/unimport/-/unimport-2.2.4.tgz#3d0c7fb354e54ba277e58725aac73fbebabee0c7"
+  integrity sha512-qMgmeEGqqrrmEtm0dqxMG37J6xBtrriqxq9hILvDb+e6l2F0yTnJomLoCCp0eghLR7bYGeBsUU5Y0oyiUYhViw==
   dependencies:
     "@rollup/pluginutils" "^5.0.2"
     escape-string-regexp "^5.0.0"
@@ -1768,16 +1773,17 @@ unimport@^2.1.0:
     strip-literal "^1.0.0"
     unplugin "^1.0.1"
 
-unplugin-auto-import@^0.13.0:
-  version "0.13.0"
-  resolved "https://registry.npmmirror.com/unplugin-auto-import/-/unplugin-auto-import-0.13.0.tgz#0d0fae74f4a71529faec7ddda9006ec32363e3fb"
-  integrity sha512-nKMxDbkjM4FRPInFfm7sWrJOKgxfKKwb5yLPP+DEGl/SG0/FtBoW1LnZL4PQfx0FXjertoHO1P/5nDf+RSip2Q==
+unplugin-auto-import@^0.14.2:
+  version "0.14.2"
+  resolved "https://registry.yarnpkg.com/unplugin-auto-import/-/unplugin-auto-import-0.14.2.tgz#35b9c258db4b25259c3d5c776d39026114df29dd"
+  integrity sha512-6DptcCD+bKlxwK0yS4ehleZTvtG4Xl9k/XxhKWxc9ii2uE28HvcA3KbYpoHAzTlHDXRBrtcCAohR8vtIRB5bfg==
   dependencies:
     "@antfu/utils" "^0.7.2"
+    "@nuxt/kit" "^3.1.2"
     "@rollup/pluginutils" "^5.0.2"
     local-pkg "^0.4.3"
     magic-string "^0.27.0"
-    unimport "^2.1.0"
+    unimport "^2.2.4"
     unplugin "^1.0.1"
 
 unplugin-vue-components@^0.23.0:
