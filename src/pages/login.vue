@@ -14,8 +14,6 @@ const goHome = () => {
 
 <style lang="scss" scoped>
 .content {
-  // background: #d6eff8;
-  // background: rgb(252, 163, 159);
   background: #2b5cab;
   // background-image: url(noise.png);
   background-image: url("noise.png");
