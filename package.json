@@ -19,7 +19,7 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.4",
+    "@vitejs/plugin-vue": "^6.0.0",
     "sass": "~1.89.2",
     "sass-loader": "^13.3.2",
     "unplugin-auto-import": "^19.3.0",
