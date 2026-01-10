@@ -12,7 +12,7 @@
     "axios": "^1.13.2",
     "element-plus": "^2.13.1",
     "html2canvas": "^1.4.1",
-    "jspdf": "^3.0.4",
+    "jspdf": "^4.0.0",
     "vue": "^3.5.26",
     "vue-axios": "^3.5.2",
     "vue-router": "^4.6.4",
