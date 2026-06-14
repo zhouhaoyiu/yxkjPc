@@ -786,10 +786,10 @@ dunder-proto@^1.0.1:
     es-errors "^1.3.0"
     gopd "^1.2.0"
 
-element-plus@^2.14.1:
-  version "2.14.1"
-  resolved "https://registry.yarnpkg.com/element-plus/-/element-plus-2.14.1.tgz#6e66443c4def6bb2b7c6ace36be40ce618c74bcc"
-  integrity sha512-UFnm1+BckNi+azkKJ7L32q1uXs9ekr99Z9pWTQPeDR05jqEWUwQq51ro4kZMVrANbjknX3Z7ukCZwTi2T6Tr9A==
+element-plus@^2.14.2:
+  version "2.14.2"
+  resolved "https://registry.yarnpkg.com/element-plus/-/element-plus-2.14.2.tgz#a86fdcdd2ed8d7df4371ac26f3e7927b364c05ac"
+  integrity sha512-eNH9uP3wQoNqieEIHXiNvIVv+zO5sZDU0CAZq5b0zqSN06DD0/V9xIq1R/qm3rw5k3nBTM1JvpxhCfRbaFLzDQ==
   dependencies:
     "@ctrl/tinycolor" "^4.2.0"
     "@element-plus/icons-vue" "^2.3.2"
@@ -805,7 +805,7 @@ element-plus@^2.14.1:
     lodash-unified "^1.0.3"
     memoize-one "^6.0.0"
     normalize-wheel-es "^1.2.0"
-    vue-component-type-helpers "^3.3.1"
+    vue-component-type-helpers "^3.3.3"
 
 entities@^7.0.1:
   version "7.0.1"
@@ -1524,10 +1524,10 @@ vue-axios@^3.5.2:
   resolved "https://registry.npmmirror.com/vue-axios/-/vue-axios-3.5.2.tgz#28637524cca550a9e97197e85a41930ec63604d5"
   integrity sha512-GP+dct7UlAWkl1qoP3ppw0z6jcSua5/IrMpjB5O8bh089iIiJ+hdxPYH2NPEpajlYgkW5EVMP95ttXWdas1O0g==
 
-vue-component-type-helpers@^3.3.1:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/vue-component-type-helpers/-/vue-component-type-helpers-3.3.2.tgz#c669b746c3bcecf0a5c3191ab28b200d8e44290f"
-  integrity sha512-l4Z2Y34m7nFMlx8vrslJaVtXxUpzgDMSESC7TakG/c5kwjYT/do+E0NcT2/vWDzaoIhsShg/2OKwX7Q4nbzC0g==
+vue-component-type-helpers@^3.3.3:
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/vue-component-type-helpers/-/vue-component-type-helpers-3.3.4.tgz#3af1314406ef36e7a51ae343fa9dab270a8b9db4"
+  integrity sha512-joip1uZTaQR0nD23N400gIdJ7xY+WiiiMA/BCKz842gvGBknqDQAzklUvDEhqFvvrhQY8S2ZANBMu4X70VMFGw==
 
 vue-router@^5.1.0:
   version "5.1.0"
