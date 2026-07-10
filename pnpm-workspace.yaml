@@ -1,0 +1,13 @@
+overrides:
+  picomatch: ^2.3.2
+
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - core-js
+
+minimumReleaseAgeExclude:
+  - element-plus@2.14.3
+
+allowBuilds:
+  '@parcel/watcher': true
+  core-js: true
