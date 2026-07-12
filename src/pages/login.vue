@@ -6,6 +6,8 @@
 
 <script lang="ts" setup>
 import { useRouter } from "vue-router";
+
+defineOptions({ name: "LoginPage" });
 const router = useRouter();
 const goHome = () => {
   router.push("/home");

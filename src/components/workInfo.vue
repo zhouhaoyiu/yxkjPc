@@ -28,7 +28,7 @@
             <td colspan="2" style="width: 187.5px;">作业内容</td>
             <td colspan="5" style="width: 468.75px;">作业地点</td>
           </tr>
-          <tr v-for="i, index in work.workList">
+          <tr v-for="i, index in work.workList" :key="index">
             <td colspan="1" style="width: 93.75px;">{{ index + 1 }}</td>
             <td colspan="2" style="width: 187.5px;">{{ i.workContent }}</td>
             <td colspan="5" style="width: 468.75px;">{{ i.workPosition }}</td>
@@ -106,7 +106,34 @@ const route = useRoute();
 const router = useRouter();
 const { UUID } = route.query;
 console.log("UUID", UUID);
-const work = ref({
+
+interface WorkItem {
+  workContent: string;
+  workPosition: string;
+}
+
+interface WorkInfo {
+  s1: boolean;
+  s2: boolean;
+  spfzrInfo: string;
+  spfzrBase64: string;
+  verifyDate: string;
+  zyfzr: string;
+  jhry: string;
+  zyry: string;
+  workList: WorkItem[];
+  spfzr: string;
+  workDate: string;
+  workContent: string;
+  workPosition: string;
+}
+
+interface WorkInfoResponse extends Omit<WorkInfo, "s1" | "s2" | "workList"> {
+  workList: string;
+  protectiveMeasureGroups: string;
+}
+
+const work = ref<WorkInfo>({
   s1: false,
   s2: false,
   spfzrInfo: "",
@@ -115,7 +142,7 @@ const work = ref({
   zyfzr: "",
   jhry: "",
   zyry: "",
-  workList: [] as any[],
+  workList: [],
   spfzr: "",
   workDate: "",
   workContent: "",
@@ -152,7 +179,7 @@ const backList = () => {
   router.replace("/home/workListPage");
 };
 async function getWorkInfo(): Promise<void> {
-  const workInfoRes = await axios.get(
+  const workInfoRes = await axios.get<WorkInfoResponse[]>(
     "http://localhost:8092/workJob/getInfoByWorkJobUuid",
     {
       params: {
@@ -160,14 +187,17 @@ async function getWorkInfo(): Promise<void> {
       },
     }
   );
-  let data = workInfoRes.data[0];
-  data.workList = JSON.parse(data.workList);
-  data.protectiveMeasureGroups = JSON.parse(data.protectiveMeasureGroups);
-  let s1 = data.protectiveMeasureGroups.includes("step1");
-  let s2 = data.protectiveMeasureGroups.includes("step2");
-  work.value = data;
-  work.value.s1 = s1;
-  work.value.s2 = s2;
+  const response = workInfoRes.data[0];
+  if (!response) return;
+
+  const { protectiveMeasureGroups, workList, ...data } = response;
+  const groups = JSON.parse(protectiveMeasureGroups) as string[];
+  work.value = {
+    ...data,
+    workList: JSON.parse(workList) as WorkItem[],
+    s1: groups.includes("step1"),
+    s2: groups.includes("step2"),
+  };
   console.log("work", work.value);
 }
 </script>

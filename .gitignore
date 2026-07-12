@@ -12,6 +12,8 @@ dist
 target/
 dist-ssr
 *.local
+auto-imports.d.ts
+components.d.ts
 
 # Editor directories and files
 .vscode/*

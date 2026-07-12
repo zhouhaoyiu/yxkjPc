@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import leftBar from "../components/leftBar.vue";
+
+defineOptions({ name: "HomePage" });
 </script>
 
 <template>

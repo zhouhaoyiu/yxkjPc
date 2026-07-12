@@ -6,7 +6,7 @@
     </div>
     <div style="width: 100%">
       <button class="buttonList" @click="goPage(index)" :class="index === focusButton ? 'buttonActive' : ''"
-        v-for="(button, index) in buttonList">
+        v-for="(button, index) in buttonList" :key="button.path">
         {{ button.name }}
       </button>
     </div>
