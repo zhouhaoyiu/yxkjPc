@@ -1,5 +1,6 @@
 overrides:
-  dompurify: 3.4.12
+  dompurify: 3.4.13
+  'nanoid@<3.3.18': 3.3.18
   picomatch: ^2.3.2
 
 onlyBuiltDependencies:
