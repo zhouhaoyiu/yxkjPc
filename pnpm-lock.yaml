@@ -14,8 +14,8 @@ importers:
   .:
     dependencies:
       axios:
-        specifier: ^1.19.0
-        version: 1.19.0(debug@4.4.3)
+        specifier: ^1.20.0
+        version: 1.20.0(debug@4.4.3)
       element-plus:
         specifier: ^2.14.5
         version: 2.14.5(vue@3.5.41(typescript@7.0.2))
@@ -30,7 +30,7 @@ importers:
         version: 3.5.41(typescript@7.0.2)
       vue-axios:
         specifier: ^3.5.2
-        version: 3.5.2(axios@1.19.0(debug@4.4.3))(vue@3.5.41(typescript@7.0.2))
+        version: 3.5.2(axios@1.20.0(debug@4.4.3))(vue@3.5.41(typescript@7.0.2))
       vue-router:
         specifier: ^5.2.0
         version: 5.2.0(@vue/compiler-sfc@3.5.41)(rolldown@1.2.5)(vite@8.2.2(@types/node@26.3.0)(sass@1.103.1)(yaml@2.9.0))(vue@3.5.41(typescript@7.0.2))
@@ -713,8 +713,8 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  axios@1.19.0:
-    resolution: {integrity: sha512-ht/iuYZXEjFxLH/Hkezgd7m6JKlHHXEUSneaDz8uZe1Gj5QZtCnpyDsckvAiEnT89OEbCLmnte4R4sn7P0EKFw==}
+  axios@1.20.0:
+    resolution: {integrity: sha512-r8aOh8j9cGKpgQAqpzrUHnSIc6a59Y3Xf/cv8sy1DrHCkZHzQGEuoq1tARk6qSyDdtQGSDgpb9kFlruzPvrgwg==}
 
   base64-arraybuffer@1.0.2:
     resolution: {integrity: sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==}
@@ -1809,7 +1809,7 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  axios@1.19.0(debug@4.4.3):
+  axios@1.20.0(debug@4.4.3):
     dependencies:
       follow-redirects: 1.16.0(debug@4.4.3)
       form-data: 4.0.6
@@ -2396,9 +2396,9 @@ snapshots:
       sass: 1.103.1
       yaml: 2.9.0
 
-  vue-axios@3.5.2(axios@1.19.0(debug@4.4.3))(vue@3.5.41(typescript@7.0.2)):
+  vue-axios@3.5.2(axios@1.20.0(debug@4.4.3))(vue@3.5.41(typescript@7.0.2)):
     dependencies:
-      axios: 1.19.0(debug@4.4.3)
+      axios: 1.20.0(debug@4.4.3)
       vue: 3.5.41(typescript@7.0.2)
 
   vue-component-type-helpers@3.3.11: {}
