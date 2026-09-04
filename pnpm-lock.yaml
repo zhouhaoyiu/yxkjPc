@@ -29,8 +29,8 @@ importers:
         specifier: ^3.5.42
         version: 3.5.42(typescript@7.0.2)
       vue-axios:
-        specifier: ^3.5.2
-        version: 3.5.2(axios@1.20.0(debug@4.4.3))(vue@3.5.42(typescript@7.0.2))
+        specifier: ^3.6.0
+        version: 3.6.0(axios@1.20.0(debug@4.4.3))(vue@3.5.42(typescript@7.0.2))
       vue-router:
         specifier: ^5.3.0
         version: 5.3.0(@vue/compiler-sfc@3.5.42)(rolldown@1.2.5)(vite@8.2.2(@types/node@26.4.0)(sass@1.103.1)(yaml@2.9.0))(vue@3.5.42(typescript@7.0.2))
@@ -1264,8 +1264,8 @@ packages:
       yaml:
         optional: true
 
-  vue-axios@3.5.2:
-    resolution: {integrity: sha512-GP+dct7UlAWkl1qoP3ppw0z6jcSua5/IrMpjB5O8bh089iIiJ+hdxPYH2NPEpajlYgkW5EVMP95ttXWdas1O0g==}
+  vue-axios@3.6.0:
+    resolution: {integrity: sha512-fgCDdHzujSdZzhP45Ob20P3UymD45/y98ZeB9xlLTwvFkU7Y69OB9QENNUcG20pXAnT8WhT+bLWO9f95Pc1rYg==}
     peerDependencies:
       axios: '*'
       vue: ^3.0.0 || ^2.0.0
@@ -2316,7 +2316,7 @@ snapshots:
       sass: 1.103.1
       yaml: 2.9.0
 
-  vue-axios@3.5.2(axios@1.20.0(debug@4.4.3))(vue@3.5.42(typescript@7.0.2)):
+  vue-axios@3.6.0(axios@1.20.0(debug@4.4.3))(vue@3.5.42(typescript@7.0.2)):
     dependencies:
       axios: 1.20.0(debug@4.4.3)
       vue: 3.5.42(typescript@7.0.2)
