@@ -1,57 +1,30 @@
-<template>
-  <div class="content">
-    <button class="goHome" @click="goHome">首页</button>
-  </div>
-</template>
-
-<script lang="ts" setup>
+<script setup lang="ts">
+import { ref } from "vue";
 import { useRouter } from "vue-router";
-
-defineOptions({ name: "LoginPage" });
+import api from "../api";
+const username = ref(""), password = ref(""), busy = ref(false), error = ref("");
 const router = useRouter();
-const goHome = () => {
-  router.push("/home");
-};
-</script>
-
-<style lang="scss" scoped>
-.content {
-  background: #2b5cab;
-  // background-image: url(noise.png);
-  background-image: url("noise.png");
-  background-attachment: fixed;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .goHome {
-    width: 144px;
-    height: 48px;
-    background-color: #fff;
-    // border: 3px ridge rgba(250, 69, 49, 0.1);
-    border: 3px ridge rgba(43, 92, 171, 0.1);
-    border-radius: 12px;
-    font-size: 24px;
-    font-weight: 900;
-    cursor: pointer;
-    // color: rgb(250, 69, 49);
-    color: #2b5cab;
-    font-weight: 900;
-    letter-spacing: 2px;
-    transition: all .3s linear;
-  }
-
-  .goHome:hover {
-    // background-color: #000;
-    // background-color: rgb(250, 69, 49);
-    background-color: #2b5cab;
-    color: #fff;
-  }
-
-  .goHome:active {
-    transform: matrix3d(0.95, 0, 0, 0, 0, 0.95, 0, 0, 0, 0, 0.95, 0, 0, 0, 0, 1);
-  }
+async function login() {
+  if (busy.value) return;
+  busy.value = true; error.value = "";
+  try {
+    const { data } = await api.post("/auth/login", { username: username.value.trim(), password: password.value });
+    if (!data.token || !["admin", "reviewer"].includes(data.role)) throw new Error("role");
+    sessionStorage.setItem("sessionToken", data.token);
+    sessionStorage.setItem("displayName", username.value.trim());
+    password.value = ""; await router.push("/home/workListPage");
+  } catch { error.value = "登录失败，请核对账号、密码和管理权限"; }
+  finally { busy.value = false; }
 }
-</style>
+</script>
+<template>
+  <main class="login-page">
+    <div class="login-brand"><img src="/water-logo.png" alt="" />太原供水</div><h1>有限空间作业</h1><p class="muted">管理工作台</p>
+    <form class="login-form" @submit.prevent="login">
+      <label>账号<input v-model="username" autocomplete="username" required /></label>
+      <label>密码<input v-model="password" type="password" autocomplete="current-password" required /></label>
+      <p v-if="error" class="error" role="alert">{{ error }}</p>
+      <button class="primary" :disabled="busy">{{ busy ? "正在登录" : "登录" }}</button>
+    </form>
+  </main>
+</template>

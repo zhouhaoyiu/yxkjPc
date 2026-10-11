@@ -98,7 +98,7 @@
 </template>
 
 <script lang="ts" setup>
-import axios from "axios";
+import axios from "../api";
 import { nextTick, onBeforeMount, ref } from "vue";
 import { useRoute } from "vue-router";
 import { useRouter } from "vue-router";
@@ -152,35 +152,15 @@ onBeforeMount(async () => {
   await getWorkInfo();
   await nextTick();
 
-  document.addEventListener("keydown", function (e) {
-    if (e.ctrlKey && e.keyCode == 80) {
-      e.preventDefault();
-      print();
-    }
-  });
-
 });
 
-const print = () => {
-  document.getElementById("print")!.style.display = "none";
-  document.getElementById("back")!.style.display = "none";
-  // leftBar
-  (document.querySelector(".leftBar")! as HTMLElement).style.display = "none";
-  // 文档背景设为白色
-  // document.body.style.backgroundColor = "#fff";
-  // .box的margin-top设为100px
-  (document.querySelector(".box") as HTMLElement)!.style.marginTop = "100px";
-  window.print();
-  document.getElementById("print")!.style.display = "block";
-  document.getElementById("back")!.style.display = "block";
-  (document.querySelector(".box")! as HTMLElement)!.style.marginTop = "0px";
-};
+const print = () => window.print();
 const backList = () => {
   router.replace("/home/workListPage");
 };
 async function getWorkInfo(): Promise<void> {
   const workInfoRes = await axios.get<WorkInfoResponse[]>(
-    "http://localhost:8092/workJob/getInfoByWorkJobUuid",
+    "/workJob/getInfoByWorkJobUuid",
     {
       params: {
         workUuid: String(UUID),

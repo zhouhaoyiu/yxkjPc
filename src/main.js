@@ -1,6 +1,4 @@
-import axios from "axios";
 import { createApp } from "vue";
-import VueAxios from "vue-axios";
 import App from "./App.vue";
 import "./style.css";
 import { createRouter, createWebHistory } from "vue-router";
@@ -62,4 +60,9 @@ const router = createRouter({
   routes,
 });
 
-createApp(App).use(VueAxios, axios).use(router).mount("#app");
+router.beforeEach(to => {
+  if (to.path.startsWith("/home") && !sessionStorage.getItem("sessionToken")) return "/login";
+  if (to.path === "/home") return "/home/workListPage";
+});
+
+createApp(App).use(router).mount("#app");

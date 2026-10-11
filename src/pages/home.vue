@@ -1,41 +1,25 @@
-<script lang="ts" setup>
-import leftBar from "../components/leftBar.vue";
-
-defineOptions({ name: "HomePage" });
-</script>
-
-<template>
-  <div class="home">
-    <leftBar class="leftBar" />
-    <RouterView class="routerview" />
-  </div>
-</template>
-
-<style lang="scss" scoped>
-.home {
-  text-align: center;
-  background: rgb(235, 238, 248);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  flex-direction: row;
-  font-size: 14px;
-
-  .leftBar {
-    width: 220px;
-    min-width: 220px;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-  }
-
-  .routerview {
-    width: 100%;
-    height: 100%;
-    padding: 1%;
-    // overflow-y: scroll;
+<script setup lang="ts">
+import { useRouter } from "vue-router";
+import { LogOut, ClipboardCheck, NotebookPen } from "@lucide/vue";
+import api from "../api";
+const router = useRouter();
+const name = sessionStorage.getItem("displayName") || "工作人员";
+async function logout() {
+  try { await api.post("/auth/logout"); } finally {
+    sessionStorage.removeItem("sessionToken"); sessionStorage.removeItem("displayName"); router.replace("/login");
   }
 }
-</style>
+</script>
+<template>
+  <div class="workspace">
+    <header class="masthead"><div class="brand"><img src="/water-logo.png" alt="" />太原供水 <span>有限空间作业</span></div><div class="account">{{ name }} <button @click="logout"><LogOut :size="17" />退出</button></div></header>
+    <div class="workspace-body">
+      <nav class="sidebar" aria-label="工作台导航">
+        <span class="nav-label">作业管理</span>
+        <RouterLink to="/home/workListPage"><ClipboardCheck :size="18" />作业申请</RouterLink>
+        <RouterLink to="/home/recordPage"><NotebookPen :size="18" />现场记录</RouterLink>
+      </nav>
+      <main class="workspace-content"><RouterView /></main>
+    </div>
+  </div>
+</template>

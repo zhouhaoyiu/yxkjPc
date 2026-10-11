@@ -244,7 +244,7 @@
 </template>
 
 <script lang="ts" setup>
-import axios from "axios";
+import axios from "../api";
 import { nextTick, onBeforeMount, ref } from "vue";
 import { useRoute } from "vue-router";
 import { useRouter } from "vue-router";
@@ -311,35 +311,15 @@ const job = ref({
 onBeforeMount(async () => {
   await getJobInfo();
   await nextTick();
-
-  document.addEventListener("keydown", function (e) {
-    if (e.ctrlKey && e.keyCode == 80) {
-      e.preventDefault();
-      print();
-    }
-  });
 });
 
-function print(): void {
-  document.getElementById("print")!.style.display = "none";
-  document.getElementById("back")!.style.display = "none";
-  // leftBar
-  (document.querySelector(".leftBar") as HTMLElement)!.style.display = "none";
-  // 文档背景设为白色
-  // document.body.style.backgroundColor = "#fff";
-  // .box的margin-top设为100px
-  (document.querySelector(".box") as HTMLElement)!.style.marginTop = "100px";
-  window.print();
-  document.getElementById("print")!.style.display = "block";
-  document.getElementById("back")!.style.display = "block";
-  (document.querySelector(".box") as HTMLElement)!.style.marginTop = "0px";
-}
+function print(): void { window.print(); }
 function backList(): void {
   router.replace("/home/recordPage");
 }
 async function getJobInfo(): Promise<void> {
   const jobInfoRes = await axios.get(
-    "http://localhost:8092/recordJob/getInfoByRecordJobUuid",
+    "/recordJob/getInfoByRecordJobUuid",
     {
       params: {
         jobUuid: String(UUID),
