@@ -15,8 +15,6 @@
     "@lucide/vue": "1.55.0",
     "axios": "^1.20.0",
     "element-plus": "^2.14.7",
-    "html2canvas": "^1.4.1",
-    "jspdf": "^4.2.1",
     "vue": "^3.5.43",
     "vue-axios": "^3.6.0",
     "vue-router": "^5.3.1"
