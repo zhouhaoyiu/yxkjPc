@@ -20,7 +20,7 @@
     "vue-router": "^5.3.1"
   },
   "devDependencies": {
-    "@types/node": "26.6.4",
+    "@types/node": "26.6.5",
     "@vitejs/plugin-vue": "^6.0.9",
     "@vue/tsconfig": "0.9.1",
     "oxlint": "^1.87.0",
