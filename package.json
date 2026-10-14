@@ -17,7 +17,7 @@
     "element-plus": "^2.14.7",
     "vue": "^3.5.43",
     "vue-axios": "^3.6.0",
-    "vue-router": "^5.3.1"
+    "vue-router": "^5.4.0"
   },
   "devDependencies": {
     "@types/node": "26.6.5",
