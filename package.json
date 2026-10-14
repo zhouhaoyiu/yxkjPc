@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@types/node": "26.6.5",
-    "@vitejs/plugin-vue": "^6.0.9",
+    "@vitejs/plugin-vue": "^6.0.10",
     "@vue/tsconfig": "0.9.1",
     "oxlint": "^1.87.0",
     "sass": "~1.105.1",
