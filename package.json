@@ -24,7 +24,7 @@
     "@vitejs/plugin-vue": "^6.0.10",
     "@vue/tsconfig": "0.9.1",
     "oxlint": "^1.88.0",
-    "sass": "~1.105.1",
+    "sass": "~1.105.2",
     "sass-loader": "^17.0.1",
     "typescript": "7.0.2",
     "unplugin-auto-import": "^21.1.0",
