@@ -23,7 +23,7 @@
     "@types/node": "26.6.5",
     "@vitejs/plugin-vue": "^6.0.10",
     "@vue/tsconfig": "0.9.1",
-    "oxlint": "^1.88.0",
+    "oxlint": "^1.89.0",
     "sass": "~1.105.2",
     "sass-loader": "^17.0.1",
     "typescript": "7.0.2",
