@@ -17,8 +17,8 @@ importers:
         specifier: 1.65.0
         version: 1.65.0(vue@3.5.44(typescript@7.0.2))
       axios:
-        specifier: ^1.20.0
-        version: 1.20.0(debug@4.4.3)
+        specifier: ^1.21.0
+        version: 1.21.0(debug@4.4.3)
       element-plus:
         specifier: ^2.14.7
         version: 2.14.7(vue@3.5.44(typescript@7.0.2))
@@ -27,7 +27,7 @@ importers:
         version: 3.5.44(typescript@7.0.2)
       vue-axios:
         specifier: ^3.6.0
-        version: 3.6.0(axios@1.20.0(debug@4.4.3))(vue@3.5.44(typescript@7.0.2))
+        version: 3.6.0(axios@1.21.0(debug@4.4.3))(vue@3.5.44(typescript@7.0.2))
       vue-router:
         specifier: ^5.4.0
         version: 5.4.0(@vue/compiler-sfc@3.5.44)(rolldown@1.2.15)(vite@8.3.5(@types/node@26.6.5)(sass@1.107.1)(yaml@2.9.0))(vue@3.5.44(typescript@7.0.2))
@@ -688,8 +688,8 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  axios@1.20.0:
-    resolution: {integrity: sha512-r8aOh8j9cGKpgQAqpzrUHnSIc6a59Y3Xf/cv8sy1DrHCkZHzQGEuoq1tARk6qSyDdtQGSDgpb9kFlruzPvrgwg==}
+  axios@1.21.0:
+    resolution: {integrity: sha512-YCzXMB53Q9PZBsh7yN7wtapit4WepwcHS2fP8QhGsBxSz5YtgYobV7GGlWlAJi+RxfU77GQTQi2DSLUma42EYA==}
 
   birpc@2.9.0:
     resolution: {integrity: sha512-KrayHS5pBi69Xi9JmvoqrIgYGDkD6mcSe/i6YKi3w5kekCLzrX4+nawcXqrj2tIp50Kw/mT/s3p+GVK0A0sKxw==}
@@ -1692,7 +1692,7 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  axios@1.20.0(debug@4.4.3):
+  axios@1.21.0(debug@4.4.3):
     dependencies:
       follow-redirects: 1.16.2(debug@4.4.3)
       form-data: 4.0.6
@@ -2196,9 +2196,9 @@ snapshots:
       sass: 1.107.1
       yaml: 2.9.0
 
-  vue-axios@3.6.0(axios@1.20.0(debug@4.4.3))(vue@3.5.44(typescript@7.0.2)):
+  vue-axios@3.6.0(axios@1.21.0(debug@4.4.3))(vue@3.5.44(typescript@7.0.2)):
     dependencies:
-      axios: 1.20.0(debug@4.4.3)
+      axios: 1.21.0(debug@4.4.3)
       vue: 3.5.44(typescript@7.0.2)
 
   vue-component-type-helpers@3.3.13: {}
